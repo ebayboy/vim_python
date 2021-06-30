@@ -10,11 +10,13 @@ Plugin 'davidhalter/jedi-vim'           "代码补全: <.>
 Plugin 'ervandew/supertab'              "补全jedi && supertab
 Plugin 'kien/ctrlp.vim'                 "模糊搜索:<Ctrl -p>
 Plugin 'Yggdroot/indentLine'            "代码缩进、颜色,自动配置 :IndentLinesToggle
-Plugin 'hhatto/autopep8'                "代码格式化: :Autopep8
+Plugin 'hhatto/autopep8'                "代码格式化 autopep8 && vim-autopep8
+Plugin 'tell-k/vim-autopep8'            "代码格式化: F8
 Plugin 'jiangmiao/auto-pairs'           "自动补全括号等
 Plugin 'kien/rainbow_parentheses.vim'   "多彩括号显示
 Plugin 'preservim/nerdcommenter'        "高效代码注释插件 : map <F4> <leader>ci <CR>
 Plugin 'tpope/vim-fugitive'             "git操作插件
+Plugin 'nvie/vim-flake8'                "代码检查: F7
 
 call vundle#end()                       
 
@@ -53,14 +55,16 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" 按 F2 执行当前 Python 代码"
-map <F2> :call Autopep8()<CR>
-func! Autopep8()
-    exec"w"
-    if &filetype == 'python'
-        exec"!autopep8 --in-place --aggressive --aggressive  %"
-    endif
-endfunc
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+
+" 按 F2 代码自动格式化
+"map <F2> :call Autopep8()<CR>
+"func! Autopep8()
+    "exec"w"
+    "if &filetype == 'python'
+        "exec"!autopep8 --in-place --aggressive --aggressive  %"
+    "endif
+"endfunc
 
 " F4 键快速注释和反注释当前行
 map <F4> <leader>ci <CR>
@@ -73,5 +77,7 @@ func! PRUN()
         exec"!python %"
     endif
 endfunc
+
+" F7 python代码语法检查
 
 
