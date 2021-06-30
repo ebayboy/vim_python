@@ -17,6 +17,8 @@ Plugin 'kien/rainbow_parentheses.vim'   "多彩括号显示
 Plugin 'preservim/nerdcommenter'        "高效代码注释插件 : map <F4> <leader>ci <CR>
 Plugin 'tpope/vim-fugitive'             "git操作插件
 Plugin 'nvie/vim-flake8'                "代码检查: F7
+Plugin 'SirVer/ultisnips'               "for snipeets
+Plugin 'honza/vim-snippets'
 
 call vundle#end()                       
 
@@ -45,7 +47,6 @@ set smartindent
 
 filetype plugin on
 
-
 " 代码补全 jedi && supertab,使用tab补全
 let g:SuperTabDefaultCompletionType = "context"
 let g:jedi#popup_on_dot = 0
@@ -56,15 +57,6 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
-
-" 按 F2 代码自动格式化
-"map <F2> :call Autopep8()<CR>
-"func! Autopep8()
-    "exec"w"
-    "if &filetype == 'python'
-        "exec"!autopep8 --in-place --aggressive --aggressive  %"
-    "endif
-"endfunc
 
 " F4 键快速注释和反注释当前行
 map <F4> <leader>ci <CR>
