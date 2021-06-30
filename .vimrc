@@ -2,17 +2,21 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
+
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'davidhalter/jedi-vim' "代码补全: <.>
-Plugin 'kien/ctrlp.vim' "模糊搜索:<Ctrl -p>
-Plugin 'Yggdroot/indentLine' "代码缩进 : :IndentLinesToggle
-Plugin 'hhatto/autopep8' "代码格式化: :Autopep8
-Plugin 'jiangmiao/auto-pairs' "自动补全括号等
-Plugin 'kien/rainbow_parentheses.vim' "多彩括号显示
-Plugin 'preservim/nerdcommenter' "高效代码注释插件 : map <F4> <leader>ci <CR>
-Plugin 'tpope/vim-fugitive' "git操作插件
-call vundle#end()            " required
+Plugin 'davidhalter/jedi-vim'           "代码补全: <.>
+Plugin 'ervandew/supertab'              "补全jedi && supertab
+Plugin 'kien/ctrlp.vim'                 "模糊搜索:<Ctrl -p>
+Plugin 'Yggdroot/indentLine'            "代码缩进、颜色,自动配置 :IndentLinesToggle
+Plugin 'hhatto/autopep8'                "代码格式化: :Autopep8
+Plugin 'jiangmiao/auto-pairs'           "自动补全括号等
+Plugin 'kien/rainbow_parentheses.vim'   "多彩括号显示
+Plugin 'preservim/nerdcommenter'        "高效代码注释插件 : map <F4> <leader>ci <CR>
+Plugin 'tpope/vim-fugitive'             "git操作插件
+
+call vundle#end()                       
 
 filetype plugin indent on    " required
 set backspace=indent,eol,start
@@ -37,8 +41,12 @@ set smartindent
 "inoremap [ []<ESC>i
 "inoremap { {<CR>}<ESC>O
 
-
 filetype plugin on
+
+
+" 代码补全 jedi && supertab,使用tab补全
+let g:SuperTabDefaultCompletionType = "context"
+let g:jedi#popup_on_dot = 0
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
