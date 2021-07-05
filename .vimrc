@@ -3,6 +3,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 
+set tags+=tags
+
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
@@ -19,6 +21,8 @@ Plugin 'tpope/vim-fugitive'             "git操作插件
 Plugin 'nvie/vim-flake8'                "代码检查: F7
 Plugin 'SirVer/ultisnips'               "for snipeets
 Plugin 'honza/vim-snippets'
+
+#find  . -name \*.py -print | xargs ptags.py
 
 call vundle#end()                       
 
@@ -72,4 +76,12 @@ endfunc
 
 " F7 python代码语法检查
 
+" F12 生成tags
+map <F12> :call PTAGS()<CR>
+func! PTAGS()
+    exec"w"
+    exec"!find  . -name \*.py -print | xargs ptags.py"
+endfunc
 
+
+find  . -name \*.py -print | xargs ptags.py
