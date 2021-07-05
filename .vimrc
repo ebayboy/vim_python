@@ -22,8 +22,6 @@ Plugin 'nvie/vim-flake8'                "代码检查: F7
 Plugin 'SirVer/ultisnips'               "for snipeets
 Plugin 'honza/vim-snippets'
 
-#find  . -name \*.py -print | xargs ptags.py
-
 call vundle#end()                       
 
 filetype plugin indent on    " required
@@ -80,8 +78,7 @@ endfunc
 map <F12> :call PTAGS()<CR>
 func! PTAGS()
     exec"w"
-    exec"!find  . -name \*.py -print | xargs ptags.py"
+    exec"!find  . -name \"*.py\" -print | xargs ptags.py 2>&1 >/dev/null"
+    " exec"! find  . -name \"*.py\""
 endfunc
 
-
-find  . -name \*.py -print | xargs ptags.py
