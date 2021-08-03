@@ -5,7 +5,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
 Plugin 'davidhalter/jedi-vim'           "代码补全: <.>
 Plugin 'ervandew/supertab'              "补全jedi && supertab
 Plugin 'kien/ctrlp.vim'                 "模糊搜索:<Ctrl -p>
@@ -20,12 +19,9 @@ Plugin 'nvie/vim-flake8'                "代码检查: F7
 Plugin 'SirVer/ultisnips'               "for snipeets
 Plugin 'honza/vim-snippets'
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
-Plugin 'file:///home/gmarik/path/to/plugin'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'SirVer/ultisnips'
 Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
