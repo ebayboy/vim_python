@@ -10,7 +10,7 @@ Plugin 'ervandew/supertab'              "补全jedi && supertab
 Plugin 'kien/ctrlp.vim'                 "模糊搜索:<Ctrl -p>
 Plugin 'Yggdroot/indentLine'            "代码缩进、颜色,自动配置 :IndentLinesToggle
 Plugin 'hhatto/autopep8'                "代码格式化 autopep8 && vim-autopep8
-Plugin 'tell-k/vim-autopep8'            "代码格式化: F8
+Plugin 'tell-k/vim-autopep8'            "代码格式化: F2
 Plugin 'jiangmiao/auto-pairs'           "自动补全括号等
 Plugin 'kien/rainbow_parentheses.vim'   "多彩括号显示
 Plugin 'preservim/nerdcommenter'        "高效代码注释插件 : map <F4> <leader>ci <CR>
@@ -31,6 +31,13 @@ Plugin 'alvan/vim-closetag'
 
 
 call vundle#end()                       
+
+" indentLine set 
+let g:indentLine_char = '¦'
+let g:indentLine_color_term = 239
+" 关闭引号隐藏等功能
+map <C-i> :IndentLinesToggle<CR> 
+let g:indentLine_enabled = 1
 
 filetype plugin indent on    " required
 set backspace=indent,eol,start
@@ -67,7 +74,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " ============================= VIM PYTHON ==================================
-autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+autocmd FileType python noremap <buffer> <F2> :call Autopep8()<CR>
 
 " F4 键快速注释和反注释当前行
 map <F4> <leader>ci <CR>
@@ -114,8 +121,8 @@ let g:tagbar_type_go = {
 
 " 设置tagbar的窗口宽度
 let g:tagbar_width=30
-" 映射Tagbar的快捷键,按F8自动打开
-map <F8> :TagbarToggle<CR>
+" 映射Tagbar的快捷键,按F9自动打开
+map <F9> :TagbarToggle<CR>
 map <F12> :!gotags -R $GOPATH/src/github.com > tags <CR>
 
 let g:godef_split=3 """左右打开新窗口的时候
@@ -127,4 +134,10 @@ autocmd FileType go nnoremap <buffer> <C-]> :call GodefUnderCursor()<cr>
 let g:godef_split=3 """左右打开新窗口的时候
 let g:godef_same_file_in_same_window=1 """函数在同一个文件中时不需要打开新窗口
 "autocmd BufWritePre *.go :Fmt
+
+"snip代码补全
+let g:UltiSnipsExpandTrigger="ii"
+let g:UltiSnipsListSnippets="iI"
+let g:UltiSnipsJumpForwardTrigger="II"
+let g:UltiSnipsJumpBackwardTrigger="OO"
 
