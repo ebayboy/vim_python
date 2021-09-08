@@ -13,7 +13,6 @@ Plugin 'hhatto/autopep8'                "代码格式化 autopep8 && vim-autopep
 Plugin 'tell-k/vim-autopep8'            "代码格式化: F2
 Plugin 'jiangmiao/auto-pairs'           "自动补全括号等
 Plugin 'kien/rainbow_parentheses.vim'   "多彩括号显示
-Plugin 'preservim/nerdcommenter'        "高效代码注释插件 : map <F4> <leader>ci <CR>
 Plugin 'tpope/vim-fugitive'             "git操作插件
 Plugin 'nvie/vim-flake8'                "代码检查: F7
 Plugin 'SirVer/ultisnips'               "for snipeets
@@ -77,7 +76,14 @@ au Syntax * RainbowParenthesesLoadBraces
 autocmd FileType python noremap <buffer> <F2> :call Autopep8()<CR>
 
 " F4 键快速注释和反注释当前行
-map <F4> <leader>ci <CR>
+" map <F4> <leader>ci <CR>
+map <F4> :call PBUILD()<CR>
+func! PBUILD()
+    if &filetype == 'go'
+        exec"!go build %"
+    endif
+endfunc
+
 
 " 按 F5 执行当前 Python 代码"
 map <F5> :call PRUN()<CR>
@@ -86,9 +92,16 @@ func! PRUN()
     if &filetype == 'python'
         exec"!python %"
     endif
+    if &filetype == 'go'
+        exec"!go run %"
+    endif
 endfunc
 
+"gocode 语法检查
+imap <F6> <C-x><C-o>
+
 " F7 python代码语法检查
+
 " ============================= VIM GO ==================================
 "for gotags
 let g:tagbar_type_go = {
@@ -127,7 +140,6 @@ map <F12> :!gotags -R $GOPATH/src/github.com > tags <CR>
 
 let g:godef_split=3 """左右打开新窗口的时候
 let g:godef_same_file_in_same_window=1 """函数在同一个文件中时不需要打开新窗口
-imap <F6> <C-x><C-o>
 
 autocmd FileType go nnoremap <buffer> gd :call GodefUnderCursor()<cr>
 autocmd FileType go nnoremap <buffer> <C-]> :call GodefUnderCursor()<cr>
