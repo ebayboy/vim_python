@@ -27,7 +27,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'dgryski/vim-godef'
 Plugin 'alvan/vim-closetag'
-
+Plugin 'preservim/nerdtree'
 
 call vundle#end()                       
 
@@ -150,4 +150,10 @@ let g:UltiSnipsExpandTrigger="ii"
 let g:UltiSnipsListSnippets="iI"
 let g:UltiSnipsJumpForwardTrigger="II"
 let g:UltiSnipsJumpBackwardTrigger="OO"
+
+"nerb tree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
