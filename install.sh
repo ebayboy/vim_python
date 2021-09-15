@@ -1,4 +1,6 @@
 #/bin/bash -x
+
+go get   golang.org/x/tools/cmd/guru
 go get -v golang.org/x/tools/gopls
 go get -u github.com/jstemmer/gotags
 go get -u golang.org/x/tools/...
