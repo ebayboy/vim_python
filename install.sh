@@ -1,2 +1,3 @@
 #/bin/bash -x
+go get -u golang.org/x/tools/...
 ln -s $GOPATH  ~/.vim/bundle/YouCompleteMe/third_party/ycmd/third_party/
