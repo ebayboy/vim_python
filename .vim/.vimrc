@@ -49,6 +49,8 @@ set encoding=utf-8
 syntax on
 set fencs=utf-8,gbk
 
+set mouse=a "start mouse scroll code"
+
 "括号补全与缩进set tabstop=4
 set softtabstop=4
 set shiftwidth=4
