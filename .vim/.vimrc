@@ -49,8 +49,6 @@ set encoding=utf-8
 syntax on
 set fencs=utf-8,gbk
 
-set mouse=a "start mouse scroll code"
-
 "括号补全与缩进set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -157,5 +155,20 @@ let g:UltiSnipsJumpBackwardTrigger="OO"
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+
+"set mouse , switch mouse modle
+
+set mouse=v
+let s:mouseModle = "N"
+function! ToMouseModle()
+    if s:mouseModle == "Y"
+        set mouse=a
+        let s:mouseModle = "N"
+    else
+        set mouse-=a
+        let s:mouseModle = "Y"
+    endif
+endfunction
+nmap <C-m> :call ToMouseModle()<cr>
+
 
