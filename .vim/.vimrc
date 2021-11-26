@@ -28,6 +28,7 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'dgryski/vim-godef'
 Plugin 'alvan/vim-closetag'
 Plugin 'preservim/nerdtree'
+Plugin 'cweill/gotests'
 
 call vundle#end()                       
 
@@ -157,7 +158,6 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
 "set mouse , switch mouse modle
-
 set mouse=v
 let s:mouseModle = "N"
 function! ToMouseModle()
